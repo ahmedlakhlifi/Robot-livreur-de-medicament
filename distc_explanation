@@ -1,0 +1,31 @@
+Face Detection and Distance Estimation Using Facial Landmarks -------------------------------------------
+The file distc.py implements a facial detection algorithm based on facial landmarks, providing more reliable results than basic face detection methods. This approach ensures that a face is not recognized unless key structural features—such as the jawline, mouth, and eyebrows—are identified. As a result, it significantly reduces false positives compared to traditional face detection algorithms that rely solely on bounding boxes.
+
+In addition to face detection, the code estimates the distance between the detected face and the camera using the pinhole camera model. This model is based on the geometric relationship between the real-world size of an object, its size in the image, and the camera’s focal length. The formula used is:
+
+Distance = (Known_Width * Focal_Length) / Perceived_Width
+
+​ 
+Where:
+
+.Known Width is the actual width of the object (e.g., average face width),
+
+.Focal Length is a calibrated constant of the camera,
+
+.Perceived Width is the width of the detected face in the image.
+
+.This distance estimation is particularly important for our application, as the robot operates autonomously in a corridor environment. By fusing this visual distance estimation with LiDAR data, we can improve overall obstacle detection accuracy. The sensor fusion enhances robustness by compensating for limitations of each sensor—LiDAR struggles with transparent or reflective surfaces, while cameras may be affected by lighting conditions.
+
+.This dual-sensor strategy provides more reliable proximity data, which is critical for safe and efficient autonomous navigation.
+
+
+   Why This Matters------------------------------
+This method is crucial because the robot is designed to navigate autonomously in corridor environments. By combining the camera-based distance estimation with LiDAR data through sensor fusion, the robot benefits from:
+
+Improved obstacle detection accuracy,
+
+Redundancy in case one sensor fails or gives unreliable data,
+
+Better adaptation to challenging environments (e.g., poor lighting or transparent surfaces).
+
+This robust sensing approach ensures safer and more reliable autonomous navigation.
